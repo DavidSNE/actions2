@@ -9,6 +9,10 @@ jobs:
     steps:
       - name: Compile
         run: echo Compiling application
+      - uses: actions/checkout@v4
+      - name: list files
+        run: ls
+
   test:
     runs-on: ubuntu-latest
     steps:
