@@ -1,0 +1,30 @@
+name: reusable workflow
+on:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Compile
+        run: echo Compiling application
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        run: echo Testing application
+
+  publish:
+    runs-on: ubuntu-latest
+    needs: [compile, test]
+    steps:
+      - name: deploy
+        run: echo Publishing application
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: publish
+    steps:
+      - name: deploy
+        run: echo Deploying application
