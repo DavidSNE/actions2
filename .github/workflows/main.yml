@@ -2,7 +2,11 @@ name: test dispatch
 on:
   workflow_dispatch:
     inputs:
-      deploy:
+      deploy-to-test-only:
+        type: boolean
+        default: false
+        required: false
+      skip-tests:
         type: boolean
         default: false
         required: false
@@ -11,4 +15,4 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - run: echo test is {{ $inputs.deploy }}
+      - run: echo deploy to test is {{ $inputs.deploy }} with tests set to {{ $inputs.skip-tests }}
