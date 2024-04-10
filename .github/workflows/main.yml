@@ -1,9 +1,14 @@
 name: test dispatch
 on:
   workflow_dispatch:
+    inputs:
+      deploy:
+        type: boolean
+        default: false
+        required: false
 
 jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - run: echo test
+      - run: echo test is {{ $inputs.deploy }}
